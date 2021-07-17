@@ -3,6 +3,7 @@ package com.IBLab.RESTapp;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.minidev.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,10 +113,9 @@ class ModuleController {
         return ResponseEntity.noContent().build(); // TODO get HTTP responses into log when deleting.
     }
 
-    //TODO change to jsonnode and fix Error where Exception is thrown before Mapping can resolve
-    @GetMapping("/IsExpired")
-    String checkAllDateOfExpiration() throws JsonProcessingException {
-        return "{}"; //getAllDateExpiredJson();
+    @GetMapping("isExpired/")
+    JSONObject checkAllDateOfExpiration() throws JsonProcessingException {
+        return getAllDateExpiredJson();
     }
 
     //WORKS
@@ -141,22 +141,19 @@ class ModuleController {
         return module.getexpirationdate();
     }
 
-    public String getAllDateExpiredJson() throws JsonProcessingException {
+    public JSONObject getAllDateExpiredJson() {
         List<EntityModel<Module>> modules = repository.findAll().stream()
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
-        String allDateExpiredMsg = "{";
+        JSONObject allDateExpiredJson = new JSONObject();
+
         for (EntityModel<Module> module : modules) {
             boolean isExpired = isDateExpired(Objects.requireNonNull(module.getContent()).getexpirationdate());
             String name = module.getContent().getName();
-            allDateExpiredMsg = allDateExpiredMsg + name + ":" + isExpired + ",";
+           allDateExpiredJson.put(name, isExpired);
         }
-        allDateExpiredMsg = allDateExpiredMsg.substring(0, allDateExpiredMsg.length() - 1);
-        allDateExpiredMsg = allDateExpiredMsg + "}";
-        log.info("ALL DATE EXPIRE MSG: " + allDateExpiredMsg);
-        //ObjectMapper mapper = new ObjectMapper();
-        //JsonNode allDateExpiredJson = mapper.readTree(allDateExpiredMsg);
-        return allDateExpiredMsg;
+        log.info("ALL DATE EXPIRE MSG: " + allDateExpiredJson);
+        return allDateExpiredJson;
     }
 
     public void deleteModuleInRepository(Module module){
