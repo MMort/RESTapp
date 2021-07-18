@@ -79,7 +79,7 @@ class ModuleController {
     @DeleteMapping("/{module}")
     ResponseEntity<?> deleteModule(@PathVariable Long module) {
         deleteModuleInRepository(module);
-        return ResponseEntity.noContent().build(); // TODO get HTTP responses into log when deleting.
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("isExpired/")
@@ -87,7 +87,6 @@ class ModuleController {
         return getAllDateExpiredJson();
     }
 
-    //WORKS
     @GetMapping("/isExpired/{module}")
     JSONObject checkOneDateOfExpiration(@PathVariable Long module) throws JsonProcessingException {
         return getDateExpiredJson(module);

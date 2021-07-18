@@ -43,16 +43,3 @@ class Module {
     public void setexpirationdate(LocalDate date) {
         this.expirationdate = date;
     }
-
-/*    // TODO check if needed
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.name, this.expirationdate);
-    }
-
-    // TODO check if needed
-    @Override
-    public String toString() {
-        return "Module{" + "name=" + this.name + ", date='" + this.expirationdate + '\'' + '}';
-    }*/
-}
