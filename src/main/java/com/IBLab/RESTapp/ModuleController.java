@@ -36,21 +36,7 @@ class ModuleController {
     }
 
     @Autowired
-    ModuleService moduleservice;
-
-    /*
-    @PostMapping("/")
-    @GetMapping("/modules")
-
-    @GetMapping("/{module}")
-    @PutMapping("/{module}")
-    @DeleteMapping("/{module}")
-
-    @GetMapping("/isExpired/{module}")
-    @GetMapping("IsExpired/")
-
-    @GetMapping("/echo")
-    */
+    ModuleService service;
 
     @PostMapping("/")
     ResponseEntity<?> newModule(@RequestBody Module newModule) {
