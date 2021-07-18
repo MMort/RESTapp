@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-//TODO check completely
 @Component
 class ModuleModelAssembler implements RepresentationModelAssembler<Module, EntityModel<Module>> {
     //Converts a non-model obj Module into a model-based one (EntityModel<Module)
