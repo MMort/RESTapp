@@ -81,12 +81,12 @@ class ModuleController {
     }
 
     @GetMapping("isExpired/")
-    JSONObject checkAllDateOfExpiration() throws JsonProcessingException {
+    JSONObject checkAllDateOfExpiration() {
         return getAllDateExpiredJson();
     }
 
     @GetMapping("/isExpired/{module}")
-    JSONObject checkOneDateOfExpiration(@PathVariable Long module) throws JsonProcessingException {
+    JSONObject checkOneDateOfExpiration(@PathVariable Long module) {
         return getDateExpiredJson(module);
     }
 
@@ -113,19 +113,17 @@ class ModuleController {
 
     public boolean isModuleRegistered(Long id) {
         Module questionableModule = repository.findById(id)
-                .orElseThrow(ModuleNotFoundException::new); // does not work because err 500 is triggered first. why?
+                .orElseThrow(ModuleNotFoundException::new);
         return true;
     }
 
     public Module getModuleById(Long id) {
-        Module questionableModule = repository.findById(id)
-                .orElseThrow(ModuleNotFoundException::new); // does not work because err 500 is triggered first. why?
-        return questionableModule;
+        return repository.findById(id)
+                .orElseThrow(ModuleNotFoundException::new);
     }
 
     public LocalDate getDateFromModule(Long id) {
-        LocalDate date = null;
-        //QUICKFIX
+        LocalDate date;
         Module questionableModule = repository.findById(id)
             .orElseThrow(ModuleNotFoundException::new);
         date =  questionableModule.getexpirationdate();
@@ -162,10 +160,10 @@ class ModuleController {
         return !expirationdate.isAfter(LocalDate.now()); //Why !isAFTER? cause isEQUAL is also not expired
     }
 
-    public LocalDate parseStringToLocalDate(String dateŚtring) {
+    public LocalDate parseStringToLocalDate(String dateStr) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         try {
-            return LocalDate.parse(dateŚtring, formatter);
+            return LocalDate.parse(dateStr, formatter);
         }catch(Exception broadSwordException) {
             throw new ExpirationDateInvalidException();
         }
