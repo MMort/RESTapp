@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 class ExpirationDateInvalidException extends RuntimeException {
 
-    ExpirationDateInvalidException(LocalDate date) {
-        super("Expiration date is not valid:" + date);
+    ExpirationDateInvalidException() {
+        super("(HTTP ERR 400) Expiration date is not valid.");
         // Evokes a HTTP 400 by default by MVC config, see EmplyeeNotFoundAdvice.java
     }
 }
