@@ -18,10 +18,10 @@ class Module {
     Module() {}
 
     Module(String name, LocalDate expirationdate) {
-
         this.name = name;
         this.expirationdate = expirationdate;
     }
+
     public Long getId() {
         return this.id;
     }
@@ -43,3 +43,4 @@ class Module {
     public void setexpirationdate(LocalDate date) {
         this.expirationdate = date;
     }
+}
