@@ -15,16 +15,16 @@ App for sending RESTful requests to a database according to IBLabs assessment.
 ### Application overview
 There are eight different HTTP requests provided.
 
-| command | path                    | request parameters                               | type of rparam |
-| --------|:-----------------------:| ------------------------------------------------:| --------------:|
-| POST    | `/`                  | `{"name":"Obi Wan", "expirationdate": "01.01.3277"}`| json           |
-| GET     | `/modules`           |                                                     |                |
-| GET     | `/<module>`          |                                                     |                |
-| GET     | `/IsExpired/<module>`|                                                     |                |
-| GET     | `IsExpired`          |                                                     |                |
-| DELETE  | `/<module>`          |                                                     |                |
-| PUT     | `/<module>`          | "expirationdate": "01.01.3277"                      |                |
-| GET     | `/echo`              | echo                                                | String         |
+| command | path                    | request parameters                                  | type of rparam |
+| --------|:-----------------------:| ---------------------------------------------------:| --------------:|
+| POST    | `/`                     | `{"name":"Obi Wan", "expirationdate": "01.01.3277"}`| json           |
+| GET     | `/modules`              |                                                     |                |
+| GET     | `/<module>`             |                                                     |                |
+| GET     | `/IsExpired/<module>`   |                                                     |                |
+| GET     | `IsExpired`             |                                                     |                |
+| DELETE  | `/<module>`             |                                                     |                |
+| PUT     | `/<module>`             | expirationdate (format "dd.MM.yyyy" required)       | String         |
+| GET     | `/echo`                 | echo                                                | String         |
 
 The `<module>` is an ID that is automatically assigned as primary key to a module object. See more in [Known Issues]() section.
 
