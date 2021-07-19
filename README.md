@@ -35,6 +35,10 @@ can be easily configured to be used for demo purposes.
 ## Run the application
 
 Since there are no build files provided via Git, the java application has to be built before.
+I recommend using IntelliJ or another suitable IDE to compile. 
+The entrypoint of the app is located here: `RESTapp/src/main/java/com/IBLab/RESTapp/ModuleApplication.java`.
+
+Once done, the java application can be built:
 ``` bash
     # BUILD
     cd <pathToRepository>/RESTapp
