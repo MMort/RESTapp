@@ -59,9 +59,8 @@ class ModuleController {
     }
 
     @DeleteMapping("/{module}")
-    ResponseEntity<?> deleteModule(@PathVariable Long module) {
+    void deleteModule(@PathVariable Long module) {
         service.deleteModuleInRepository(module);
-        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("isExpired/")

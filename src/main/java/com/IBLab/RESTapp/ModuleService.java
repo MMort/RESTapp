@@ -69,7 +69,7 @@ public class ModuleService {
 
     JSONObject getExpirationDate(Long id) {
         JSONObject dateExpiredJson = new JSONObject();
-        dateExpiredJson.put(getModuleById(id).getName(), isExpirationDateExpired(getModuleById(id).getexpirationdate()));
+        dateExpiredJson.put("expired", isExpirationDateExpired(getModuleById(id).getexpirationdate()));
         return dateExpiredJson;
     }
 
