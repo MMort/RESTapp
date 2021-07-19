@@ -1,4 +1,4 @@
-package com.IBLab.RESTapp;
+package com.IBLab.RESTapp.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-class ExpirationDateInvalidAdvice {
+class ModuleNotFoundAdvice {
 
     @ResponseBody // advice rendered straight into responsebody
-    @ExceptionHandler(ExpirationDateInvalidException.class) // triggers on this Exc.
-    @ResponseStatus(HttpStatus.BAD_REQUEST) // == 400
-    String expirationDateInvalidHandler(ExpirationDateInvalidException ex) {
+    @ExceptionHandler(ModuleNotFoundException.class) // triggers on this Exc.
+    @ResponseStatus(HttpStatus.NOT_FOUND) // == 404
+    String ModuleNotFoundHandler(ModuleNotFoundException ex) {
         return ex.getMessage();
     }
 }
