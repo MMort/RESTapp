@@ -48,8 +48,14 @@ Since there are no build files provided via Git, the java application has to be 
 ## Test the application
 
 You can test all available HTTP calls via postman.
-Here is a [test envirnoment](https://www.getpostman.com/collections/bb37c31f361d73fd217c) for
-all HTTP requests.
+Here is a [postman test workspace](https://www.getpostman.com/collections/bb37c31f361d73fd217c) for
+all HTTP requests. 
+You can import the workspace to your postman desktop suite by
+1. going to your workspace
+2. Find and press the `Import` button (right beside your workspace title)
+3. add link `https://www.getpostman.com/collections/bb37c31f361d73fd217c` and import it.
+
+OR google on how to import workspaces by link.
 
 Unfortunately, the POST message is not working via postman (it is with curl tho). Thus, the app preloads one module
 `{"name":"Obi Wan", "expirationdate": "01.01.3277"}` to be able to test the other requests.
