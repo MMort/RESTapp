@@ -15,6 +15,8 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.time.format.DateTimeFormatter;
 
+// To be clear, i copied this. It basically handles the format that Date,Time,DateTime expect.
+// The Bean is automatically called due to the spring.factories entry in resources/META-INF
 @Configuration
 @AutoConfigureBefore({JacksonAutoConfiguration.class})
 public class DateTimeAutoConfiguration {
